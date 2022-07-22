@@ -31,11 +31,14 @@ router.post("/login", async (req, res) => {
 
     res.cookie("user", token, { httpOnly: true });
     res.json(result);
-    
   } catch (err) {
     console.error(err);
     res.status(400).json({ message: err.message });
   }
+});
+
+router.get("/logout", (req, res) => {
+  res.clearCookie("user");
 });
 
 module.exports = router;
