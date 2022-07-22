@@ -1,18 +1,24 @@
 const express = require("express");
+const cookieParser = require('cookie-parser');
+
 
 const cors = require("./middlewares/cors");
 const { PORT } = require('./config/env');
 const { dbInit } = require("./config/DB.JS");
 
-const userController = require('./controllers/userController')
+const userRoutes = require("./routes/userRoutes");
+const photoRoutes = require('./routes/photoRoutes');
 
 
   const app = express();
   
+
   app.use(express.json());
   app.use(cors());
+  app.use(cookieParser());
 
-  app.use('/users', userController)
+  app.use('/users', userRoutes)
+  app.use('/photo', photoRoutes)
 
   dbInit();
 

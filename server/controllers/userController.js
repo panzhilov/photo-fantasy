@@ -1,7 +1,6 @@
 const userService = require("../services/userService");
-const router = require("express").Router();
 
-router.post("/register", async (req, res) => {
+async function registerUser(req, res){
   const { email, firstName, lastName, password } = req.body;
 
   try {
@@ -20,9 +19,9 @@ router.post("/register", async (req, res) => {
     console.error(err);
     res.status(400).json({ message: err.message });
   }
-});
+};
 
-router.post("/login", async (req, res) => {
+ async function loginUser(req, res){
   const { email, password } = req.body;
 
   try {
@@ -35,10 +34,14 @@ router.post("/login", async (req, res) => {
     console.error(err);
     res.status(400).json({ message: err.message });
   }
-});
+};
 
-router.get("/logout", (req, res) => {
+function logoutUser(req, res){
   res.clearCookie("user");
-});
+};
 
-module.exports = router;
+module.exports = {
+    registerUser,
+    loginUser,
+    logoutUser
+};
