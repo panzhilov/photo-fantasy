@@ -1,26 +1,21 @@
 const express = require("express");
-const mongoose = require("mongoose");
 
 const cors = require("./middlewares/cors");
+const { PORT } = require('./config/env');
+const { dbInit } = require("./config/DB.JS");
 
-function start() {
-  try {
-    const database = mongoose.connect(
-      "mongodb://localhost:27017/photo-fantasy"
-    );
-    console.log("DB Ready");
-  } catch (error) {
-    console.log("Have problem with connecting to database");
-  }
+const userController = require('./controllers/userController')
+
 
   const app = express();
   
   app.use(express.json());
   app.use(cors());
 
-  app.listen(3000, () => {
-    console.log("Server listening on port 3000");
-  });
-}
+  app.use('/users', userController)
 
-start();
+  dbInit();
+
+  app.listen(PORT, () => console.log(`Server listening on port ${PORT}`));
+
+
