@@ -9,10 +9,29 @@ router.post("/register", async (req, res) => {
       email,
       firstName,
       lastName,
-      password,
+      password
     );
 
-    res.json(result)
+    const token = await userService.createToken(result);
+
+    res.cookie("user", token, { httpOnly: true });
+    res.json(result);
+  } catch (err) {
+    console.error(err);
+    res.status(400).json({ message: err.message });
+  }
+});
+
+router.post("/login", async (req, res) => {
+  const { email, password } = req.body;
+
+  try {
+    const result = await userService.login(email, password);
+    const token = await userService.createToken(result);
+
+    res.cookie("user", token, { httpOnly: true });
+    res.json(result);
+    
   } catch (err) {
     console.error(err);
     res.status(400).json({ message: err.message });

@@ -18,11 +18,25 @@ const { SECRET } = require("../config/env");
     password
   });
   
-  createToken(user);
-  
   await user.save();
 }
 
+async function login(email, password) {
+  const user = await User.findOne({email});
+  
+  if(!user){
+    throw new Error('Incorect email or password');
+  }
+
+  const isValidPassword = await bcrypt.compare(password, user.password)
+  
+
+  if(!isValidPassword){
+    throw new Error('Incorect email or password');
+  }
+  
+  return user;
+}
 
 function createToken(user){
   const payload = {_id: user._id, email: user.email, firstName: user.firstName, lastName: user.lastName};
@@ -42,4 +56,6 @@ function createToken(user){
 
 module.exports = {
   register,
+  login,
+  createToken
 }
