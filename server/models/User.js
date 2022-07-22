@@ -10,19 +10,13 @@ const userSchema = new mongoose.Schema({
   },
   firstName: {
     type: String,
-    validate: [
-      /^[a-zA-Z]+$/,
-      "first name should consist only letters"
-    ],
-    required: true
+    validate: [/^[a-zA-Z]+$/, "first name should consist only letters"],
+    required: true,
   },
   lastName: {
     type: String,
-    validate: [
-      /^[a-zA-Z]+$/,
-      "last name should consist only letters"
-    ],
-    required: true
+    validate: [/^[a-zA-Z]+$/, "last name should consist only letters"],
+    required: true,
   },
   password: {
     type: String,
@@ -33,6 +27,32 @@ const userSchema = new mongoose.Schema({
     minlength: [6, "Your password should be at least 6 characters"],
     required: true,
   },
+  info: {
+    type: String,
+    required: false,
+  },
+  phone: {
+    type: Number,
+    required: false,
+  },
+  imgUrl: {
+    type: String,
+    required: false,
+  },
+  coverImg: {
+    type: String,
+    required: false,
+  },
+  role: {
+    type: String,
+    default: "user",
+  },
+  photos: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Photo",
+    },
+  ],
 });
 
 userSchema.virtual("repeatPassword").set(function (repeatPassword) {
@@ -49,13 +69,15 @@ userSchema.pre("save", function (next) {
   });
 });
 
-
-userSchema.index({email:1}, {
-  collation: {
-    locale: 'en',
-    strength: 1
+userSchema.index(
+  { email: 1 },
+  {
+    collation: {
+      locale: "en",
+      strength: 1,
+    },
   }
-});
+);
 
 const User = mongoose.model("User", userSchema);
 
