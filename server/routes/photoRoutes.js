@@ -1,10 +1,9 @@
 const router = require('express').Router();
 
-const { createPhoto } = require('../controllers/photoController');
-
-router.post('/create', createPhoto)
+const { createPhoto, getPhotos } = require('../controllers/photoController');
 
 
-
+router.post("/create", createPhoto);
+router.get("/all-photos", getPhotos)
 
 module.exports = router;

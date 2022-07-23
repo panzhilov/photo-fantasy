@@ -11,7 +11,7 @@ async function registerUser(req, res){
       password
     );
 
-    const token = await userService.createToken(result);
+    req.auth.createToken(result)
 
     res.cookie("user", token, { httpOnly: true });
     res.json(result);
@@ -23,13 +23,12 @@ async function registerUser(req, res){
 
  async function loginUser(req, res){
   const { email, password } = req.body;
-
   try {
-    const result = await userService.login(email, password);
-    const token = await userService.createToken(result);
-
-    res.cookie("user", token, { httpOnly: true });
-    res.json(result);
+    const user = await userService.login(email, password);
+    const token = await userService.createToken(user);
+      
+    res.cookie('user', token, { httpOnly: true });
+    res.json(user);
   } catch (err) {
     console.error(err);
     res.status(400).json({ message: err.message });

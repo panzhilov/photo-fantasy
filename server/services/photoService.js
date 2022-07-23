@@ -1,9 +1,5 @@
 const Photo = require("../models/Photo");
 
-async function create(photoData) {
-    Photo.create(photoData);
-}
+exports.create = (photoData) => Photo.create(photoData);
 
-module.exports = {
-  create,
-};
+exports.getAllPhotos = () => Photo.find();
