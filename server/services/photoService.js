@@ -2,8 +2,10 @@ const Photo = require("../models/Photo");
 
 exports.create = (photoData) => Photo.create(photoData);
 
-exports.getAllPhotos = () => Photo.find();
+exports.getAll = () => Photo.find();
 
-exports.getPhoto = (photoId) => Photo.findById(photoId).populate('author');
+exports.getOne = (photoId) => Photo.findById({_id: photoId}).populate('author');
 
-exports.editPhoto = (photoId, photoData) => Photo.updateOne({_id: photoId}, {$set: photoData}, {runValidators: true});
+exports.edit = (photoId, photoData) => Photo.updateOne({_id: photoId}, {$set: photoData}, {runValidators: true});
+
+exports.deleteOne = (photoId) => Photo.deleteOne({_id: photoId});
