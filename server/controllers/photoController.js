@@ -15,8 +15,21 @@ async function createPhoto(req, res){
 async function getPhotos(req, res){
     const photos = await photoService.getAllPhotos();
 }
+async function getPhoto(req, res){
+    try {
+        const photo = await photoService.getPhoto(req.params.id)
+
+        if(photo){
+            res.status(200).json({ message: "Photo fetched!", photo });
+        }
+    } catch (err) {
+        console.error("getPhoto - Database error: ", err.message);
+    }
+}
+
 
 module.exports = {
     createPhoto,
-    getPhotos
+    getPhotos,
+    getPhoto,
 }
