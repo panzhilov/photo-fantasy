@@ -26,10 +26,20 @@ async function getPhoto(req, res){
         console.error("getPhoto - Database error: ", err.message);
     }
 }
+async function editPhoto(req, res){
+   
+    try {
+        await photoService.editPhoto(req.params.photoId, req.body);
+        res.status(200).json({ message: "Photo edited!" });
+    } catch (err) {
+        console.error("editPhoto - Database error: ", err.message);
+    }
+}
 
 
 module.exports = {
     createPhoto,
     getPhotos,
     getPhoto,
+    editPhoto
 }
