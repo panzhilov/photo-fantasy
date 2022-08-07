@@ -1,0 +1,81 @@
+/* HEADER */
+
+:root{
+    --ctl-blue-light: #557ceb;
+}
+
+header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 70px;
+    background-color: #fff;
+    border-bottom: 1px solid black;
+}
+
+/* LOGO */
+
+.logo{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+
+    margin-left: 48px;
+}
+
+#logo-img{
+    max-width: 90px;
+}
+
+.logo .logo__text{
+    color: #2d2d2d;
+    background-color: #fff;
+    font-size: large;
+    line-height: 2px;
+}
+
+.logo .logo__text .logo__desc{
+    color: #006aff;
+}
+
+/* NAVIGATION */
+
+.navigation .menu{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+}
+
+.navigation .menu .menu__item{
+    padding: 20px;
+    font-size: large;
+}
+
+/* NAVIGATION BUTTONS */
+.navigation-btns{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 72px;
+    font-weight: 500;
+}
+
+.navigation-btns #login{
+    border: none;
+}
+
+.navigation-btns .login-icon{
+    color: #557ceb;
+}
+
+.navigation-btns #get-started{
+    background-color: var(--ctl-blue-light);
+    border: 1px solid var(--ctl-blue-light);
+    border-radius: 47px;
+    border-bottom-right-radius: 0px;
+    color: #fff;
+    font-size: 15px;
+    padding: 7px 20px;
+    margin-left: 10px;
+}
