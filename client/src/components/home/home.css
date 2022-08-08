@@ -1,4 +1,43 @@
-.recent-photos{
+/* PHOTO LANDSCAPE */
+
+.photo-landscape{
+    margin-bottom: 40px;
+}
+
+.photo-landscape .photo{
+    position: relative;
+    width: 100%;
+    height: 500px;
+}
+
+.photo-landscape__desc{
+    position: absolute;
+    top: 41%;
+    left: 100px;
+ }
+
+ .photo-landscape__desc__text{
+    position: relative;
+    font-size: 40px;
+    color: #fff;
+    margin-bottom: 10px;
+ }
+
+ .photo-landscape__desc__btn{
+    position: absolute;
+    right: 1px;
+    width: 200px;
+    background-color: var(--ctl-blue-light);
+    color: #fff;
+    border: 1 px solid var(--ctl-blue-light);
+    border-radius: 47px;
+    padding: 7px 20px;
+    margin-left: 10px;
+ }
+
+ /* RECENT PHOTOS */
+
+ .recent-photos{
     position: relative;
     width: 100%;
     margin-bottom: 40px;

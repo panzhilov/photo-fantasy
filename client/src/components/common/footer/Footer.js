@@ -25,8 +25,8 @@ export const Footer = () => {
         </div>
         <div className="footer__fourth-col">
             <span className="title">Contacts</span>
-            <p><i class="fa-solid fa-location-pin"></i> bul. Bulgaria №20, Asenovgrad, Bulgaria</p>
-            <p><i class="fa-solid fa-phone"></i>  0876440300</p>
+            <p><i className="fa-solid fa-location-pin"></i> bul. Bulgaria №20, Asenovgrad, Bulgaria</p>
+            <p><i className="fa-solid fa-phone"></i>  0876440300</p>
             
         </div>
       </div>

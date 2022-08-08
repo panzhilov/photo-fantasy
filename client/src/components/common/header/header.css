@@ -63,6 +63,7 @@ header{
 
 .navigation-btns #login{
     border: none;
+    text-decoration: none;
 }
 
 .navigation-btns .login-icon{
@@ -74,6 +75,7 @@ header{
     border: 1px solid var(--ctl-blue-light);
     border-radius: 47px;
     border-bottom-right-radius: 0px;
+    text-decoration: none;
     color: #fff;
     font-size: 15px;
     padding: 7px 20px;

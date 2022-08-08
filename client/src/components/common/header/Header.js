@@ -1,6 +1,8 @@
 import "./header.css";
 import logo from "./images/logo.png";
 
+import { Link } from "react-router-dom";
+
 export const Header = () => {
   return (
     <>
@@ -15,7 +17,7 @@ export const Header = () => {
 
         <div className="navigation">
           <ul className="menu" role="list">
-            <li className="menu__item">Home</li>
+            <Link to='/' className="menu__item">Home</Link>
             <li className="menu__item">Photos</li>
             <li className="menu__item">Categories</li>
           </ul>
@@ -24,10 +26,10 @@ export const Header = () => {
         <div className="navigation-btns">
           <div className="login-btn">
             <i className="fa-solid fa-arrow-right-to-bracket login-icon"></i>
-            <button id="login">Login</button>
+            <Link to="/login" id="login">Login</Link>
           </div>
           <div className="get-started-btn">
-            <button id="get-started">Get started</button>
+          <Link to="/register" id="get-started">Get started</Link>
           </div>
         </div>
       </header>
